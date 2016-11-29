@@ -18,7 +18,6 @@
 		59F696E71DEDE09B00F7501D /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F696E51DEDE09B00F7501D /* Student.swift */; };
 		59F696E91DEDE36C00F7501D /* StudentsDb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F696E81DEDE36C00F7501D /* StudentsDb.swift */; };
 		59F696EA1DEDE36C00F7501D /* StudentsDb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F696E81DEDE36C00F7501D /* StudentsDb.swift */; };
-		59F696EC1DEDEC0D00F7501D /* StudentDb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F696EB1DEDEC0D00F7501D /* StudentDb.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +53,6 @@
 		59F696D91DEDD0DD00F7501D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59F696E51DEDE09B00F7501D /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		59F696E81DEDE36C00F7501D /* StudentsDb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentsDb.swift; path = ../StudentsDb.swift; sourceTree = "<group>"; };
-		59F696EB1DEDEC0D00F7501D /* StudentDb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentDb.swift; path = assignment1Tests/StudentDb.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +118,6 @@
 		59F696CB1DEDD0DD00F7501D /* assignment1Tests */ = {
 			isa = PBXGroup;
 			children = (
-				59F696EB1DEDEC0D00F7501D /* StudentDb.swift */,
 				59F696CC1DEDD0DD00F7501D /* assignment1Tests.swift */,
 				59F696CE1DEDD0DD00F7501D /* Info.plist */,
 			);
@@ -284,7 +281,6 @@
 				59F696EA1DEDE36C00F7501D /* StudentsDb.swift in Sources */,
 				59F696CD1DEDD0DD00F7501D /* assignment1Tests.swift in Sources */,
 				59F696E71DEDE09B00F7501D /* Student.swift in Sources */,
-				59F696EC1DEDEC0D00F7501D /* StudentDb.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,6 +515,7 @@
 				59F696DE1DEDD0DD00F7501D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		59F696DF1DEDD0DD00F7501D /* Build configuration list for PBXNativeTarget "assignment1Tests" */ = {
 			isa = XCConfigurationList;
@@ -527,6 +524,7 @@
 				59F696E11DEDD0DD00F7501D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		59F696E21DEDD0DD00F7501D /* Build configuration list for PBXNativeTarget "assignment1UITests" */ = {
 			isa = XCConfigurationList;
@@ -535,6 +533,7 @@
 				59F696E41DEDD0DD00F7501D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
