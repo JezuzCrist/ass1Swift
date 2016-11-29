@@ -93,12 +93,30 @@ class assignment1Tests: XCTestCase {
         let studentGotten = StudentDB.instance.getStudent(studentId: "311")
         
         XCTAssert(studentGotten?.id == "311")
-        
         XCTAssert(studentGotten?.firstName == "omer")
-        
         XCTAssert(studentGotten?.lastName == "mintz")
-        
         XCTAssert(studentGotten?.phoneNumber == "1234567")
+        
+    }
+    func testGetMasterStudent() {
+        let student1 = MasterStudent()
+        student1.firstName = "omer"
+        student1.lastName = "mintz"
+        student1.id = "311"
+        student1.phoneNumber = "1234567"
+        student1.mscDegree = "yolo"
+        student1.thisis = "i love ios"
+        
+        StudentDB.instance.students.append(student1)
+        
+        let studentGotten = StudentDB.instance.getStudent(studentId: "311")
+        
+        XCTAssert(studentGotten?.id == "311")
+        XCTAssert(studentGotten?.firstName == "omer")
+        XCTAssert(studentGotten?.lastName == "mintz")
+        XCTAssert(studentGotten?.phoneNumber == "1234567")
+        XCTAssert((studentGotten as? MasterStudent)?.mscDegree == "yolo")
+        XCTAssert((studentGotten as? MasterStudent)?.thisis == "i love ios")
         
     }
     func testDeleteStudent() {
@@ -132,6 +150,28 @@ class assignment1Tests: XCTestCase {
         
         XCTAssert(StudentDB.instance.students.count == 1)
         XCTAssert(StudentDB.instance.students[0].firstName == student2.firstName)
+        
+    }
+
+    func testUpdatePhdStudent() {
+
+        let student1 = Student()
+        student1.firstName = "omer"
+        student1.lastName = "mintz"
+        student1.id = "311"
+        student1.phoneNumber = "1234567"
+        
+        let student2 = PhdStudent()
+        student2.id="311"
+        student2.firstName = "Nissim"
+        student2.phdDegree = "ios > andriod"
+        
+        StudentDB.instance.students.append(student1)
+        StudentDB.instance.updateStudent(studentToUpdate: student2)
+        
+        XCTAssert(StudentDB.instance.students.count == 1)
+        XCTAssert(StudentDB.instance.students[0].firstName == student2.firstName)
+        XCTAssert((StudentDB.instance.students[0] as? PhdStudent)?.phdDegree == student2.phdDegree)
         
     }
 }
