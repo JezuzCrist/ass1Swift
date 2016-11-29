@@ -10,8 +10,18 @@ import Foundation
 
 
 class Student {
-    var id : String = ""
-    var firstName:  String = ""
-    var lastName : String = ""
-    var phoneNumber : String = ""
+    var id : NSString = ""
+    var firstName:  NSString = ""
+    var lastName : NSString = ""
+    var phoneNumber : NSString = ""
+    var degree : NSString = ""
+}
+
+class MasterStudent: Student {
+    var mscDegree:NSString = ""
+    var thisis:NSString = ""
+}
+
+class PhdStudent: MasterStudent {
+    var phdDegree:NSString = ""
 }

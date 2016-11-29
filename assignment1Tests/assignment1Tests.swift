@@ -10,12 +10,13 @@ import XCTest
 @testable import assignment1
 
 class assignment1Tests: XCTestCase {
-    var studentDB : StudentDB? = nil
-    
+
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        studentDB = StudentDB()
+        StudentDB.instance.students = []
+        
+        
         
     }
     
@@ -31,16 +32,53 @@ class assignment1Tests: XCTestCase {
         student1.id = "311"
         student1.phoneNumber = "1234567"
         
-        self.studentDB?.addStudent(studentToAdd: student1)
+        StudentDB.instance.addStudent(studentToAdd: student1)
+        
+        XCTAssert(StudentDB.instance.students[0].id == "311")
+        XCTAssert(StudentDB.instance.students[0].firstName == "omer")
+        XCTAssert(StudentDB.instance.students[0].lastName == "mintz")
+        XCTAssert(StudentDB.instance.students[0].phoneNumber == "1234567")
+        
+    }
+    func testAddMasterStudent() {
+        let student1 = MasterStudent()
+        student1.firstName = "omer"
+        student1.lastName = "mintz"
+        student1.id = "311"
+        student1.phoneNumber = "1234567"
+        student1.mscDegree = "yolo"
+        student1.thisis = "i love ios"
+        
+        StudentDB.instance.addStudent(studentToAdd: student1)
         
         
-        XCTAssert(self.studentDB?.students[0].id == "311")
+        XCTAssert(StudentDB.instance.students[0].id == "311")
+        XCTAssert(StudentDB.instance.students[0].firstName == "omer")
+        XCTAssert(StudentDB.instance.students[0].lastName == "mintz")
+        XCTAssert(StudentDB.instance.students[0].phoneNumber == "1234567")
+        XCTAssert((StudentDB.instance.students[0] as? MasterStudent)?.mscDegree == "yolo")
+        XCTAssert((StudentDB.instance.students[0] as? MasterStudent)?.thisis == "i love ios")
         
-        XCTAssert(self.studentDB?.students[0].firstName == "omer")
+    }
+     func testAddPhdStudent() {
+        let student1 = PhdStudent()
+        student1.firstName = "omer"
+        student1.lastName = "mintz"
+        student1.id = "311"
+        student1.phoneNumber = "1234567"
+        student1.mscDegree = "yolo"
+        student1.thisis = "i love ios"
+        student1.phdDegree = "ios is the best"
         
-        XCTAssert(self.studentDB?.students[0].lastName == "mintz")
+        StudentDB.instance.addStudent(studentToAdd: student1)
         
-        XCTAssert(self.studentDB?.students[0].phoneNumber == "1234567")
+        XCTAssert(StudentDB.instance.students[0].id == "311")
+        XCTAssert(StudentDB.instance.students[0].firstName == "omer")
+        XCTAssert(StudentDB.instance.students[0].lastName == "mintz")
+        XCTAssert(StudentDB.instance.students[0].phoneNumber == "1234567")
+        XCTAssert((StudentDB.instance.students[0] as? PhdStudent)?.mscDegree == "yolo")
+        XCTAssert((StudentDB.instance.students[0] as? PhdStudent)?.thisis == "i love ios")
+        XCTAssert((StudentDB.instance.students[0] as? PhdStudent)?.phdDegree == "ios is the best")
         
     }
     func testGetStudent() {
@@ -50,9 +88,9 @@ class assignment1Tests: XCTestCase {
         student1.id = "311"
         student1.phoneNumber = "1234567"
         
-        self.studentDB?.students.append(student1)
+        StudentDB.instance.students.append(student1)
         
-        let studentGotten = self.studentDB?.getStudent(studentId: "311")
+        let studentGotten = StudentDB.instance.getStudent(studentId: "311")
         
         XCTAssert(studentGotten?.id == "311")
         
@@ -70,10 +108,10 @@ class assignment1Tests: XCTestCase {
         student1.id = "311"
         student1.phoneNumber = "1234567"
         
-        self.studentDB?.students.append(student1)
-        self.studentDB?.deleteStudent(studentToRemove: student1.id)
+        StudentDB.instance.students.append(student1)
+        StudentDB.instance.deleteStudent(studentToRemove: student1.id)
         
-        XCTAssert(self.studentDB?.students.count == 0)
+        XCTAssert(StudentDB.instance.students.count == 0)
         
         
     }
@@ -89,19 +127,11 @@ class assignment1Tests: XCTestCase {
         student2.id="311"
         student2.firstName = "Nissim"
         
-        self.studentDB?.students.append(student1)
-        self.studentDB?.updateStudent(studentToUpdate: student2)
+        StudentDB.instance.students.append(student1)
+        StudentDB.instance.updateStudent(studentToUpdate: student2)
         
-        XCTAssert(self.studentDB?.students.count == 1)
-        XCTAssert(self.studentDB?.students[0].firstName == student2.firstName)
+        XCTAssert(StudentDB.instance.students.count == 1)
+        XCTAssert(StudentDB.instance.students[0].firstName == student2.firstName)
         
     }
-    
-    //    func testPerformanceExample() {
-        //        // This is an example of a performance test case.
-        //        self.measure {
-            //            // Put the code you want to measure the time of here.
-            //        }
-            //    }
-
-        }
+}
